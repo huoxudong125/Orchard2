@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <RootNamespace>Microsoft.AspNetCore.Mvc.Modules</RootNamespace>
+    <RootNamespace>Orchard.Mvc.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
