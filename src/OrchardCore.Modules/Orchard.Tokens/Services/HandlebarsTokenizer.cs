@@ -32,8 +32,16 @@ namespace Orchard.Tokens.Services
 
             return _tokens.Replace(template, match =>
             {
-                var render = _renderers.GetOrAdd(match.Value, t => _handlebars.Compile(t));
-                return render.Invoke(context);
+                try
+                {
+                    var render = _renderers.GetOrAdd(match.Value, t => _handlebars.Compile(t));
+                    return render.Invoke(context);
+                }
+                catch
+                {
+                    return template;
+                }
+                
             });
         }
     }
