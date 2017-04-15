@@ -1,0 +1,17 @@
+﻿@model Orchard.Liquid.ViewModels.LiquidPartViewModel
+@inject Orchard.Liquid.ILiquidManager LiquidManager
+
+@{ 
+    string liquid = Model.Liquid;
+
+    var model = new
+    {
+        Content = Model.LiquidPart.ContentItem,
+        Context = Context,
+        User = User
+    };
+
+    var html = LiquidManager.GetTemplate(liquid).Render(DotLiquid.Hash.FromAnonymousObject(model));
+}
+
+@Html.Raw(html)
