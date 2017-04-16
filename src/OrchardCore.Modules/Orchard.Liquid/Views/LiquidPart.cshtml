@@ -1,12 +1,14 @@
-﻿@model Orchard.Liquid.ViewModels.LiquidPartViewModel
-@inject Orchard.Liquid.ILiquidManager LiquidManager
+﻿@using Orchard.Liquid;
+@model Orchard.Liquid.ViewModels.LiquidPartViewModel
+@inject ILiquidManager LiquidManager
 
 @{ 
     string liquid = Model.Liquid;
 
     var model = new
     {
-        Content = Model.LiquidPart.ContentItem,
+        ContentItem = Model.LiquidPart.ContentItem,
+        Content = new JTokenDrop((Newtonsoft.Json.Linq.JToken)Model.LiquidPart.ContentItem.Content),
         Context = Context,
         User = User
     };
