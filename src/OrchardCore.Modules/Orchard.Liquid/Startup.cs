@@ -1,11 +1,11 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
 using System.Security.Principal;
 using DotLiquid;
 using DotLiquid.NamingConventions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Modules;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Display.ContentDisplay;
 using Orchard.ContentManagement.Handlers;
@@ -15,8 +15,8 @@ using Orchard.Liquid.Drivers;
 using Orchard.Liquid.Handlers;
 using Orchard.Liquid.Indexing;
 using Orchard.Liquid.Model;
-using Microsoft.AspNetCore.Http.Internal;
-using System.Linq;
+using Newtonsoft.Json.Linq;
+using Orchard.Liquid.Drops;
 
 namespace Orchard.Liquid
 {
@@ -34,19 +34,9 @@ namespace Orchard.Liquid
             services.AddScoped<IContentPartHandler, LiquidPartHandler>();
 
             Template.RegisterSafeType(typeof(IContent), new string[] { nameof(IContent.ContentItem) });
-            Template.RegisterSafeType(typeof(ContentItem), new string[] {
-                nameof(ContentItem.Id),
-                nameof(ContentItem.ContentItemId),
-                nameof(ContentItem.Number),
-                nameof(ContentItem.Owner),
-                nameof(ContentItem.Author),
-                nameof(ContentItem.Published),
-                nameof(ContentItem.Latest),
-                nameof(ContentItem.ContentType),
-                nameof(ContentItem.CreatedUtc),
-                nameof(ContentItem.ModifiedUtc),
-                nameof(ContentItem.PublishedUtc)
-            });
+            Template.RegisterSafeType(typeof(ContentItem), o => new ContentItemDrop((ContentItem)o));
+
+            Template.RegisterSafeType(typeof(JObject), o => new JTokenDrop((JToken)o));
 
             Template.RegisterSafeType(typeof(ContentElement), new string[] {
                 nameof(ContentElement.Content),

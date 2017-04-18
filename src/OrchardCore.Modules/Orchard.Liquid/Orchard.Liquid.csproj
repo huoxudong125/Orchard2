@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\OrchardCore\Microsoft.AspNetCore.Modules.Abstractions\Microsoft.AspNetCore.Modules.Abstractions.csproj" />
     <ProjectReference Include="..\..\OrchardCore\Orchard.ContentManagement.Abstractions\Orchard.ContentManagement.Abstractions.csproj" />
+    <ProjectReference Include="..\..\OrchardCore\Orchard.ContentManagement\Orchard.ContentManagement.csproj" />
     <ProjectReference Include="..\..\OrchardCore\Orchard.ContentTypes.Abstractions\Orchard.ContentTypes.Abstractions.csproj" />
     <ProjectReference Include="..\..\OrchardCore\Orchard.Data\Orchard.Data.csproj" />
     <ProjectReference Include="..\..\OrchardCore\Orchard.DisplayManagement\Orchard.DisplayManagement.csproj" />
