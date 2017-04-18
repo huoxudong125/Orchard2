@@ -23,7 +23,10 @@ $(function () {
         styleActiveLine: true,
         matchBrackets: true,
         mode: {name: "liquid", base: "text/html"},
-        onChange: function(cm) { $(document).trigger('contentpreview:render'); }
       });
+
+    editor.on('change',function (cm) {
+        $(document).trigger('contentpreview:render');
+    });
 });
 </script>
