@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -12,9 +12,9 @@ using MySql.Data.MySqlClient;
 using Npgsql;
 using Orchard.Data.Migration;
 using Orchard.Environment.Shell;
-using YesSql.Core.Indexes;
-using YesSql.Core.Services;
+using YesSql.Indexes;
 using YesSql.Storage.Sql;
+using YesSql;
 
 namespace Orchard.Data
 {

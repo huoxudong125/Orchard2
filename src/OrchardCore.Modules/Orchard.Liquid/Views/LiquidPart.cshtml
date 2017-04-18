@@ -3,7 +3,7 @@
 @model Orchard.Liquid.ViewModels.LiquidPartViewModel
 @inject ILiquidManager LiquidManager
 @inject Orchard.ContentManagement.IContentManager ContentManager
-@inject YesSql.Core.Services.ISession Session
+@inject YesSql.ISession Session
 
 @{ 
     string liquid = Model.Liquid;

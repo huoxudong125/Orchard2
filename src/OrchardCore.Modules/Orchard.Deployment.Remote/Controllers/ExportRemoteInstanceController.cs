@@ -15,7 +15,7 @@ using Orchard.Deployment.Remote.Services;
 using Orchard.Deployment.Services;
 using Orchard.DisplayManagement.Notify;
 using Microsoft.AspNetCore.Mvc.Modules.Utilities;
-using YesSql.Core.Services;
+using YesSql;
 
 namespace Orchard.Deployment.Remote.Controllers
 {
