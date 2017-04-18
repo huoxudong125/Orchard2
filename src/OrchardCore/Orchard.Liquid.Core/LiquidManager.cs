@@ -7,7 +7,9 @@ namespace Orchard.Liquid
     {
         private static Template Empty = Template.Parse("");
 
-        private static ConcurrentDictionary<string, Template> _templates = new ConcurrentDictionary<string, Template>();
+        // The caches is a singleton per tenant so that they can be cleared when the tenant
+        // is restarted.
+        private ConcurrentDictionary<string, Template> _templates = new ConcurrentDictionary<string, Template>();
         
         public Template GetTemplate(string source)
         {
