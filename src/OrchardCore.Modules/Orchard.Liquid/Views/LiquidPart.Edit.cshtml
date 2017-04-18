@@ -1,8 +1,29 @@
 ﻿@using Orchard.Liquid.ViewModels;
 @model LiquidPartViewModel
 
+<style asp-src="/Orchard.Liquid/codemirror/lib/codemirror.css"></style>
+<script asp-src="/Orchard.Liquid/codemirror/lib/codemirror.js" at="Foot"></script>
+<script asp-src="/Orchard.Liquid/codemirror/addon/mode/simple.js" at="Foot"></script>
+<script asp-src="/Orchard.Liquid/codemirror/addon/mode/multiplex.js" at="Foot"></script>
+<script asp-src="/Orchard.Liquid/codemirror/mode/xml/xml.js" at="Foot"></script>
+
+<style asp-src="/Orchard.Liquid/codemirror/mode/liquid/liquid.css"></style>
+<script asp-src="/Orchard.Liquid/codemirror/mode/liquid/liquid.js" at="Foot"></script>
+
 <fieldset class="form-group">
     <label asp-for="Liquid">@T["Body"]</label>
     <textarea asp-for="Liquid" rows="5" class="form-control content-preview-text"></textarea>
     <span class="hint">@T["The body of the content item, in Liquid format."]</span>
 </fieldset>
+
+<script at="Foot">
+$(function () {
+    var editor = CodeMirror.fromTextArea(document.getElementById('@Html.IdFor(x => x.Liquid)'), {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: {name: "liquid", base: "text/html"},
+        onChange: function(cm) { $(document).trigger('contentpreview:render'); }
+      });
+});
+</script>

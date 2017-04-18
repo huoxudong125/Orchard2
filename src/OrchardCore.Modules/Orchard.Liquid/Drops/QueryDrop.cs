@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using DotLiquid;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Records;
@@ -27,11 +28,11 @@ namespace Orchard.Liquid.Drops
         
         public IQuery<ContentItem, ContentItemIndex> Query { get; set; }
 
-        public object Result
+        public object List
         {
             get
             {
-                var result = Query.List().GetAwaiter().GetResult();
+                var result = Query.List().GetAwaiter().GetResult().ToList();
                 return result;
             }
         }
